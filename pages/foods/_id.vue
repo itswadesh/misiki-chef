@@ -1,0 +1,492 @@
+<template>
+  <div>
+    <Heading title="Add food details" />
+    <form
+      novalidate
+      autocomplete="off"
+      @submit.stop.prevent="submit()"
+      class="container relative"
+    >
+      <button
+        type="button"
+        @click="deleteProduct(food.id)"
+        class="absolute top-0 right-0 z-10 w-8 h-8 bg-gray-300 rounded-full cursor-pointer hover:bg-gray-200"
+      >
+        <TrashIcon />
+      </button>
+      <div class="shadow card columns">
+        <br />
+        <div class="margin-phn">
+          <!-- <v-checkbox
+            v-model="food.active"
+            @change="submit()"
+            label="Open Kitchen"
+          />-->
+          <select
+            v-if="categories"
+            class="w-full mb-4 bg-gray-200 border"
+            label="Dish Category"
+            name="name"
+            v-model="food.category"
+          >
+            <!-- <option>Please select category </option> -->
+            <option v-for="c in categories.data" :key="c.id" :value="c.id">
+              {{ c.name }}
+            </option>
+          </select>
+          <Textbox
+            class="w-full mb-4"
+            label="Dish Name"
+            name="name"
+            v-model="food.name"
+          />
+          <Textbox
+            class="w-full mb-4"
+            label="Description"
+            name="description"
+            v-model="food.description"
+          />
+          <Textbox
+            class="w-full mb-4"
+            label="price"
+            name="price"
+            v-model.number="food.price"
+            type="tel"
+          />
+          <Textbox
+            class="w-full mb-4"
+            label="Qty"
+            name="qty"
+            v-model.number="food.stock"
+            type="tel"
+          />
+          <div class="mb-4">
+            <Radio v-model="food.type" value="V" color="green" class="mr-2"
+              >Veg</Radio
+            >
+            <Radio v-model="food.type" value="N" color="red" class="mr-2"
+              >Non Veg</Radio
+            >
+          </div>
+          <div class="flex" v-if="deliveryslots">
+            <Radio
+              color="secondary"
+              v-model="food.time"
+              v-for="(s, ix) in deliveryslots.data"
+              :key="ix"
+              :value="s.val"
+              class="mr-2"
+              >{{ s.name }} [{{ s.val }}]</Radio
+            >
+          </div>
+          <!-- <div class="flex mx-2 variants">
+            <div v-for="v in food.variants" :key="v.id">
+              <Textbox v-model="v.name" label="Variation" />
+              <button type="button" @click="saveVariant(food.id,v)">S</button>
+            </div>
+            <button type="button" @click="newVariant">+</button>
+          </div>-->
+          <ImageUpload
+            :image="food.img"
+            name="food"
+            folder="food"
+            @remove="removeImage"
+            @save="saveImage"
+          />
+          <div class="msg">{{ msg }}</div>
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
+      </div>
+      <div
+        class="fixed bottom-0 w-full py-3 text-xl text-center px-auto primary"
+      >
+        <button class="w-full" type="submit" v-if="$route.params.id == 'new'">
+          Add Dish
+        </button>
+        <button class="w-full" type="submit" v-else>Save Changes</button>
+      </div>
+    </form>
+  </div>
+</template>
+<script>
+// import { timesList } from '~/config'
+import { Radio, Textbox } from '~/../shared/components/ui'
+import { Heading, ImageUpload } from '~/../shared/components'
+import product from '~/../shared/gql/product/product.gql'
+import createProduct from '~/../shared/gql/product/createProduct.gql'
+import saveProduct from '~/../shared/gql/product/saveProduct.gql'
+import deleteProduct from '~/../shared/gql/product/deleteProduct.gql'
+import saveVariant from '~/../shared/gql/product/saveVariant.gql'
+import SLOTS from '~/../shared/gql/slot/slots.gql'
+import CATEGORIES from '~/../shared/gql/category/categories.gql'
+import { TrashIcon } from 'vue-feather-icons'
+export default {
+  middleware: ['isAuth', 'geo'],
+  components: { ImageUpload, Radio, Textbox, Heading, TrashIcon },
+  data() {
+    return {
+      loading: false,
+      fadeIn: '',
+      msg: null,
+      err: [],
+      nwErr: null,
+      graphErr: null,
+      deliveryslots: null,
+      food: { type: 'V', time: '8:30 - 9:30 PM' },
+      date: null,
+      menu: false,
+      modal: false,
+      menuDate: false,
+      menuTime: false,
+      // timesList: timesList,
+      dishes: [],
+      categories: null,
+      qty: 5,
+    }
+  },
+  async created() {
+    try {
+      this.deliveryslots = (
+        await this.$apollo.query({ query: SLOTS })
+      ).data.slots
+      this.categories = (
+        await this.$apollo.query({ query: CATEGORIES })
+      ).data.categories
+    } catch (e) {}
+    if (this.$route.params.id == 'new') return
+    try {
+      this.$store.commit('clearErr')
+      const food = (
+        await this.$apollo.query({
+          query: product,
+          variables: { id: this.$route.params.id },
+          fetchPolicy: 'no-cache',
+        })
+      ).data.product
+      if (!food.time) food.time = '8:30 - 9:30 PM'
+      this.food = food
+      if (this.food.category) this.food.category = this.food.category.id
+    } catch (e) {
+      this.$store.commit('setErr', e)
+    } finally {
+      this.$store.commit('busy', false)
+    }
+  },
+  methods: {
+    // newVariant() {
+    //   if (!this.food.variants) {
+    //     this.food.variants = [{ name: '' }]
+    //   } else {
+    //     this.food.variants.push({ name: '' })
+    //   }
+    // },
+    // async saveVariant(pid, v) {
+    //   try {
+    //     this.$store.commit('clearErr')
+    //     let data = (
+    //       await this.$apollo.mutate({
+    //         mutation: saveVariant,
+    //         variables: { pid, ...v }
+    //       })
+    //     ).data.saveVariant
+    //     this.$store.commit('info', 'Variation saved')
+    //     // this.$router.go(-1)
+    //   } catch (e) {
+    //     this.$store.commit('setErr', e)
+    //   } finally {
+    //     this.$store.commit('busy', false)
+    //   }
+    // },
+    async deleteProduct(id) {
+      this.$swal({
+        title: 'Are you sure to delete this dish?',
+        text: 'This will permanently delete including image',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Delete!',
+      }).then(async (result) => {
+        if (result.value) {
+          try {
+            await this.$apollo.mutate({
+              mutation: deleteProduct,
+              variables: { id },
+              fetchPolicy: 'no-cache',
+            })
+            this.$router.push('/search')
+          } catch (e) {
+            this.$store.commit('setErr', e)
+          } finally {
+            this.$store.commit('busy', false)
+          }
+        }
+      })
+    },
+    saveImage(name, image) {
+      this.food.img = image
+      this.publishDish()
+
+      // this.submit();
+    },
+    removeImage(name) {
+      this.food.img = ''
+      this.publishDish()
+    },
+    // add(qty) {
+    //   if (qty < 5 && this.qty <= 0) return;
+    //   // if (qty > 0 && this.qty >= 300) {
+    //   //   this.$store.commit("setErr", "Sorry! Maximum 300 qty allowed.");
+    //   //   return;
+    //   // }
+    //   this.qty += qty;
+    // },
+    async submit() {
+      const vm = this
+      if (!vm.food.name) {
+        this.$store.commit('setErr', 'Please name your dish')
+        return
+      } else if (!vm.food.type) {
+        this.$store.commit('setErr', 'Please select Veg or Non Veg')
+        return
+      }
+      // else if (!vm.food.price || vm.food.price < 30) {
+      //   this.$store.commit('setErr', 'price must be atleast 30')
+      //   return
+      // }
+      try {
+        this.loading = true
+        this.$store.commit('busy', true)
+        // let date = moment(this.date + " " + this.time, "YYYY-MM-DD h a");
+        // if (date.diff(moment()) < 0) {
+        //   console.log("Delivery time is invalid");
+        //   this.$store.commit("setErr", "Delivery time is invalid");
+        //   return;
+        // }
+        // this.food.deliveryDate = date;
+        if (this.food.stock == 0) {
+          await vm.publishDish()
+          // this.$router.push("/search");
+        } else if (this.food.stock > 0) {
+          this.$swal({
+            title: 'Are you sure to activate this dish?',
+            text: 'This will be available for booking by users',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Publish!',
+          }).then(async (result) => {
+            if (result.value) {
+              await vm.publishDish()
+              // this.$router.push('/search')
+            }
+          })
+        } else {
+          this.$store.commit('setErr', 'Quantity must be >= 0')
+          return
+        }
+      } catch (e) {
+        this.$store.commit('setErr', e.toString())
+        return
+      } finally {
+        this.$store.commit('busy', false)
+        this.loading = false
+      }
+    },
+    async publishDish() {
+      try {
+        delete this.food.vendor
+        this.$store.commit('clearErr')
+        // this.food.price = +this.food.price
+        // this.food.stock = +this.food.stock
+        // console.log('zzzzzzzzzzzzzzzzzzzzzzzzzzz', this.food.badge.__typename)
+        delete this.food.badge
+
+        const location = this.$cookies.get('geo')
+        if (!location) return this.$router.push('/onboarding')
+
+        if (this.$route.params.id == 'new') {
+          await this.$apollo.mutate({
+            mutation: createProduct,
+            variables: { ...this.food, city: location.city },
+            fetchPolicy: 'no-cache',
+          })
+        } else {
+          await this.$apollo.mutate({
+            mutation: saveProduct,
+            variables: {
+              id: this.$route.params.id,
+              ...this.food,
+            },
+            fetchPolicy: 'no-cache',
+          })
+        }
+        this.$router.go(-1)
+      } catch (e) {
+        this.$store.commit('setErr', e)
+      } finally {
+        this.$store.commit('busy', false)
+      }
+    },
+  },
+  layout: 'none',
+  head() {
+    return {
+      title: 'Post Your Food',
+    }
+  },
+}
+</script>
+<style scoped>
+.msg {
+  font-size: 10px;
+  color: #fb6340;
+}
+.otp-container {
+  text-align: center;
+}
+.phone {
+  height: 45px;
+  border: 1px solid #da1c5f;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+.otp {
+  height: 45px;
+  width: 45px;
+  font-size: 25px;
+  text-align: center;
+  border: 1px solid #fff;
+  border-bottom: 1px solid #888;
+}
+.opt::-webkit-inner-spin-button,
+.opt::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.cart-total-after {
+  margin-bottom: 10px;
+}
+.align {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+h1 {
+  font-size: 14px;
+  padding-left: 26px;
+
+  color: #3baaec;
+}
+h5 {
+  font-size: 17px;
+  margin-top: 0px;
+  color: #3baaec;
+  text-align: -webkit-center;
+}
+h3 {
+  font-size: 23px;
+}
+h4 {
+  font-size: 14px;
+  padding-left: 26px;
+  color: #3baaec;
+}
+.border {
+  border: none;
+  outline: none;
+  padding-top: 10px;
+  text-align: -webkit-center;
+}
+.margin {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 0;
+  padding-top: 10px;
+}
+.margin-phn {
+  padding: 0 1rem;
+}
+textarea {
+  height: 60px;
+  margin-top: -11px;
+}
+.padding {
+  padding-top: 25px;
+}
+
+.columns {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  margin-top: 0.25rem;
+  padding-left: 0px;
+  padding-right: 0px;
+  height: auto;
+}
+.card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0.0625rem solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.25rem;
+  position: relative;
+}
+
+.big-button .loading {
+  -webkit-animation: fadeIn 3s infinite;
+  -moz-animation: fadeIn 3s infinite;
+  -o-animation: fadeIn 3s infinite;
+  animation: fadeIn 3s infinite;
+}
+
+.gray {
+  font-size: 23px;
+  color: gray;
+}
+.shadow {
+  box-shadow: 0 -1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+.w100 {
+  width: 100%;
+  padding: 0.7rem 0.7rem 0;
+}
+.top-padding {
+  padding-top: 50px;
+  font-size: 17px;
+}
+.img1 {
+  text-align: -webkit-center;
+  padding-top: 3px;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+</style>

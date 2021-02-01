@@ -1,0 +1,6 @@
+[submodule "shared"]
+	path = shared
+	url = git@github.com:itswadesh/misiki-shared.git
+[submodule "gql"]
+	path = gql
+	url = git@github.com:itswadesh/misiki-gql.git
