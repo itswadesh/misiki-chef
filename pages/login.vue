@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import { location } from '~/../shared/mixins'
-import { Login } from '~/../shared/components'
+import { location } from '~/shared/mixins'
+import { Login } from '~/shared/components'
 export default {
   layout: 'none',
   mixins: [location],

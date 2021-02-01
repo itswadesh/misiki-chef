@@ -113,15 +113,15 @@
 </template>
 <script>
 // import { timesList } from '~/config'
-import { Radio, Textbox } from '~/../shared/components/ui'
-import { Heading, ImageUpload } from '~/../shared/components'
-import product from '~/../shared/gql/product/product.gql'
-import createProduct from '~/../shared/gql/product/createProduct.gql'
-import saveProduct from '~/../shared/gql/product/saveProduct.gql'
-import deleteProduct from '~/../shared/gql/product/deleteProduct.gql'
-import saveVariant from '~/../shared/gql/product/saveVariant.gql'
-import SLOTS from '~/../shared/gql/slot/slots.gql'
-import CATEGORIES from '~/../shared/gql/category/categories.gql'
+import { Radio, Textbox } from '~/shared/components/ui'
+import { Heading, ImageUpload } from '~/shared/components'
+import product from '~/gql/product/product.gql'
+import createProduct from '~/gql/product/createProduct.gql'
+import saveProduct from '~/gql/product/saveProduct.gql'
+import deleteProduct from '~/gql/product/deleteProduct.gql'
+import saveVariant from '~/gql/product/saveVariant.gql'
+import SLOTS from '~/gql/slot/slots.gql'
+import CATEGORIES from '~/gql/category/categories.gql'
 import { TrashIcon } from 'vue-feather-icons'
 export default {
   middleware: ['isAuth', 'geo'],

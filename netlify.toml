@@ -1,21 +1,21 @@
 [[redirects]]
   from = "/graphql/*"
-  to = "https://tapi.litekart.in/graphql/:splat"
+  to = "https://apiv2.misiki.in/graphql/:splat"
   status = 200
 
 [[redirects]]
   from = "/images/*"
-  to = "https://tapi.litekart.in/images/:splat"
+  to = "https://apiv2.misiki.in/images/:splat"
   status = 200
 
 [[redirects]]
   from = "/api/*"
-  to = "https://tapi.litekart.in/api/:splat"
+  to = "https://apiv2.misiki.in/api/:splat"
   status = 200
 
 [[redirects]]
   from = "/auth/*"
-  to = "https://tapi.litekart.in/auth/:splat"
+  to = "https://apiv2.misiki.in/auth/:splat"
   status = 200
 
 [build]

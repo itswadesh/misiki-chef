@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import { Header, Error } from '~/../shared/components'
-import { Loading } from '~/../shared/components/ui'
+import { Header, Error } from '~/shared/components'
+import { Loading } from '~/shared/components/ui'
 import StickyFooter from '~/components/StickyFooter'
 import AccountMenu from '~/components/AccountMenu'
 export default {

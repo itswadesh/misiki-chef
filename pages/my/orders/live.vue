@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { HereMap } from '~/../shared/components'
+import { HereMap } from '~/shared/components'
 export default {
   components: {
     HereMap,

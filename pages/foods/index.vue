@@ -1,7 +1,7 @@
 <template>
   <div>
     <Heading title="My Dishes" />
-    <ApolloQuery :query="require('~/../shared/gql/user/me.gql')">
+    <ApolloQuery :query="require('~/gql/user/me.gql')">
       <template v-slot="{ result: { error, data }, isLoading }">
         <div v-if="isLoading">Loading........</div>
         <ErrComponent v-else-if="error" :error="error" />
@@ -22,7 +22,7 @@
           <Search />
           <div class="flex flex-wrap mx-1 mt-2">
             <ApolloQuery
-              :query="require('~/../shared/gql/product/products.gql')"
+              :query="require('~/gql/product/products.gql')"
             >
               <template v-slot="{ result: { error, data }, isLoading }">
                 <div v-if="isLoading">Loading........</div>
@@ -79,12 +79,12 @@
   </div>
 </template>
 <script>
-import { Heading, Search } from '~/../shared/components'
+import { Heading, Search } from '~/shared/components'
 import StickyFooter from '~/components/StickyFooter'
-import { query, search, pagination } from '~/../shared/mixins'
+import { query, search, pagination } from '~/shared/mixins'
 import { ClockIcon, PlusIcon } from 'vue-feather-icons'
-// import getProducts from '~/../shared/gql/product/products.gql'
-// import me from '~/../shared/gql/user/me.gql'
+// import getProducts from '~/gql/product/products.gql'
+// import me from '~/gql/user/me.gql'
 
 export default {
   middleware: 'isAuth',

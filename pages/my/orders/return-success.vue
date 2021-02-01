@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { Checkbox } from '~/../shared/components/ui'
+import { Checkbox } from '~/shared/components/ui'
 export default {
   components: { Checkbox },
 }

@@ -206,7 +206,7 @@
 </template>
 
 <script>
-import { Checkbox, Radio } from '~/../shared/components/ui'
+import { Checkbox, Radio } from '~/shared/components/ui'
 import { ChevronRightIcon } from 'vue-feather-icons'
 export default {
   components: { Checkbox, Radio, ChevronRightIcon },

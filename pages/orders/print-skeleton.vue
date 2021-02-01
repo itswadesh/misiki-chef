@@ -19,10 +19,10 @@
   </div>
 </template>
 <script>
-import { Header } from '~/../shared/components'
-import myCustomers from '~/../shared/gql/order/myCustomers.gql'
-import todayTotal from '~/../shared/gql/order/todayTotal.gql'
-import updateOrder from '~/../shared/gql/order/updateOrder.gql'
+import { Header } from '~/shared/components'
+import myCustomers from '~/gql/order/myCustomers.gql'
+import todayTotal from '~/gql/order/todayTotal.gql'
+import updateOrder from '~/gql/order/updateOrder.gql'
 
 export default {
   async created() {

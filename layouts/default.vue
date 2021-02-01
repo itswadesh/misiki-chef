@@ -10,8 +10,8 @@
   </div>
 </template>
 <script>
-import { BackToTopDark, Loading } from '~/../shared/components/ui'
-import { Error, Header } from '~/../shared/components'
+import { BackToTopDark, Loading } from '~/shared/components/ui'
+import { Error, Header } from '~/shared/components'
 
 export default {
   middleware: ['geo'],

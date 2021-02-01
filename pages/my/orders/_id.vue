@@ -140,7 +140,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { HereMap } from '~/../shared/components'
+import { HereMap } from '~/shared/components'
 import { ArrowLeftIcon } from 'vue-feather-icons'
 export default {
   async asyncData({ params, query, route, redirect, $axios, store }) {

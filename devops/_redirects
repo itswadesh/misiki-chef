@@ -1,0 +1,3 @@
+/graphql  https://apiv2.misiki.in/graphql  200
+/images/*  https://apiv2.misiki.in/images/:splat  200
+/* /index.html 200

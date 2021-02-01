@@ -62,7 +62,7 @@
 <script>
 import { ArrowRightCircleIcon } from 'vue-feather-icons'
 import { mapGetters } from 'vuex'
-import { Ratingcircle } from '~/../shared/components/ui'
+import { Ratingcircle } from '~/shared/components/ui'
 export default {
   props: ['p'],
   methods: {},

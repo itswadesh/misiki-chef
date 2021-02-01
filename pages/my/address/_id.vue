@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import { AddressEdit, Heading } from '~/../shared/components'
+import { AddressEdit, Heading } from '~/shared/components'
 
 export default {
   components: { AddressEdit, Heading },

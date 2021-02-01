@@ -6,7 +6,7 @@
 
 <script>
 import AccountMenu from '~/components/AccountMenu'
-import { Button } from '~/../shared/components/ui'
+import { Button } from '~/shared/components/ui'
 export default {
   components: { AccountMenu, Button },
   middleware: ['isAuth'],

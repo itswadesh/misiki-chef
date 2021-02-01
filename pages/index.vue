@@ -7,21 +7,21 @@
         heading="Today's Orders"
         link="/orders"
         class="w-full"
-        :query="require('~/../shared/gql/order/myTodaysSummary.gql')"
+        :query="require('~/gql/order/myTodaysSummary.gql')"
         model="myTodaysSummary"
       ></DashboardCard>
       <DashboardCard
         heading="Total Orders"
         link="/orders"
         class="w-full"
-        :query="require('~/../shared/gql/order/mySummary.gql')"
+        :query="require('~/gql/order/mySummary.gql')"
         model="mySummary"
       ></DashboardCard>
       <ReviewSummary
         heading="Total Orders"
         link="/orders"
         class="w-full"
-        :query="require('~/../shared/gql/order/mySummary.gql')"
+        :query="require('~/gql/order/mySummary.gql')"
         model="mySummary"
       ></ReviewSummary>
     </div>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { Heading, DashboardCard, ReviewSummary } from '~/../shared/components'
+import { Heading, DashboardCard, ReviewSummary } from '~/shared/components'
 import StickyFooter from '~/components/StickyFooter'
 
 export default {

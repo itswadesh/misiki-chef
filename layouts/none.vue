@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { Loading } from '~/../shared/components/ui'
+import { Loading } from '~/shared/components/ui'
 
 export default {
   components: { Loading },

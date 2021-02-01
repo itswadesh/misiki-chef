@@ -8,7 +8,7 @@
 </template>
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import { Product, Header } from '~/../shared/components'
+import { Product, Header } from '~/shared/components'
 export default {
   data() {
     return {

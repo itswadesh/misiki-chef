@@ -43,10 +43,10 @@
   </div>
 </template>
 <script>
-import { Heading, ImageUpload } from '~/../shared/components'
+import { Heading, ImageUpload } from '~/shared/components'
 import StickyFooter from '~/components/StickyFooter'
-import me from '~/../shared/gql/user/me.gql'
-import kitchenPhotos from '~/../shared/gql/user/kitchenPhotos.gql'
+import me from '~/gql/user/me.gql'
+import kitchenPhotos from '~/gql/user/kitchenPhotos.gql'
 import { XIcon } from 'vue-feather-icons'
 
 export default {

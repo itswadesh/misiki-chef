@@ -8,7 +8,7 @@
 
 <script>
 const StickyFooter = () => import('~/components/StickyFooter')
-import { Heading } from '~/../shared/components'
+import { Heading } from '~/shared/components'
 
 export default {
   components: { StickyFooter, Heading },

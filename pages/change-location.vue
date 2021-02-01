@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { ChangeLocation } from '~/../shared/components'
+import { ChangeLocation } from '~/shared/components'
 
 export default {
   layout: 'none',

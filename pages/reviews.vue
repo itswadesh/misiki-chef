@@ -8,8 +8,8 @@
 
 <script>
 const StickyFooter = () => import('~/components/StickyFooter')
-import { Heading } from '~/../shared/components'
-import reviews from '~/../shared/gql/product/reviews.gql'
+import { Heading } from '~/shared/components'
+import reviews from '~/gql/product/reviews.gql'
 
 export default {
   components: { StickyFooter, Heading },

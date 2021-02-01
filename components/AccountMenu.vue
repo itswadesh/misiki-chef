@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- https://codepen.io/adamwathan/pen/KKKqKLB -->
-    <ApolloQuery :query="require('~/../shared/gql/user/me.gql')">
+    <ApolloQuery :query="require('~/gql/user/me.gql')">
       <template v-slot="{ result: { error, data }, isLoading }">
         <div v-if="isLoading">Loading........</div>
         <ErrComponent v-else-if="error" :error="error" />
@@ -276,8 +276,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import signOut from '~/../shared/gql/user/signOut.gql'
-// import me from '~/../shared/gql/user/me.gql'
+import signOut from '~/gql/user/signOut.gql'
+// import me from '~/gql/user/me.gql'
 export default {
   data() {
     return {

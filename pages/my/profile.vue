@@ -134,16 +134,16 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { Avatar, Heading, ImageUpload } from '~/../shared/components'
+import { Avatar, Heading, ImageUpload } from '~/shared/components'
 import {
   Textbox,
   Textarea,
   Checkbox,
   CheckboxLight,
-} from '~/../shared/components/ui'
-import me from '~/../shared/gql/user/me.gql'
+} from '~/shared/components/ui'
+import me from '~/gql/user/me.gql'
 
-import { location } from '~/../shared/mixins'
+import { location } from '~/shared/mixins'
 export default {
   middleware: ['isAuth', 'geo'],
   mixins: [location],

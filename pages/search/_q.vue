@@ -35,10 +35,10 @@ import {
   // Banner,
   // Product,
   // Categories
-} from '~/../shared/components'
-// import { Loading } from '~/../shared/components/ui'
-import { query, infiniteScroll } from '~/../shared/mixins'
-import myProducts from '~/../shared/gql/product/myProducts.gql'
+} from '~/shared/components'
+// import { Loading } from '~/shared/components/ui'
+import { query, infiniteScroll } from '~/shared/mixins'
+import myProducts from '~/gql/product/myProducts.gql'
 import { mapGetters } from 'vuex'
 
 export default {

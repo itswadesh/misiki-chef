@@ -10,8 +10,8 @@
   </div>
 </template>
 <script>
-import { BackToTopDark, Loading } from '~/../shared/components/ui'
-import { Error, Search } from '~/../shared/components'
+import { BackToTopDark, Loading } from '~/shared/components/ui'
+import { Error, Search } from '~/shared/components'
 import StickyFooter from '~/components/StickyFooter'
 
 export default {

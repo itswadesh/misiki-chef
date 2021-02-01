@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import * as config from '@misiki/shared/nuxtConfig'
+import * as config from './shared/nuxtConfig'
 let { HTTP_ENDPOINT, dev } = require(resolve(process.cwd(), '../shared/config'))
 const server = dev ? 'http://localhost:8887' : 'https://chef.misiki.in'
 config.pwa = {

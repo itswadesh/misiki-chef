@@ -90,13 +90,13 @@
 <script>
 import { PrinterIcon, RefreshCwIcon } from 'vue-feather-icons'
 import { mapGetters } from 'vuex'
-import { Header } from '~/../shared/components'
+import { Header } from '~/shared/components'
 const StickyFooter = () => import('~/components/StickyFooter')
-import myCustomers from '~/../shared/gql/order/myCustomers.gql'
-import myTodaysSummary from '~/../shared/gql/order/myTodaysSummary.gql'
-import updateOrder from '~/../shared/gql/order/updateOrder.gql'
-import orderStatuses from '~/../shared/gql/settings/orderStatuses.gql'
-import { infiniteScroll } from '~/../shared/mixins'
+import myCustomers from '~/gql/order/myCustomers.gql'
+import myTodaysSummary from '~/gql/order/myTodaysSummary.gql'
+import updateOrder from '~/gql/order/updateOrder.gql'
+import orderStatuses from '~/gql/settings/orderStatuses.gql'
+import { infiniteScroll } from '~/shared/mixins'
 
 export default {
   middleware: 'isAuth',
