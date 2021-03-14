@@ -4,7 +4,7 @@
     <div class="container relative">
       <!-- <Categories /> -->
       <div
-        v-if="!user.verified"
+        v-if="!user || !user.verified"
         class="px-8 py-8 text-xl text-center text-secondary"
       >
         Waiting for verification by admin
