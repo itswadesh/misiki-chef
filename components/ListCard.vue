@@ -36,8 +36,13 @@
               {{ p.stock }} left
             </span>
           </div>
+          <div class="flex items-center ">
           <div class="text-xl font-black text-gray-700">
             {{ p.price | currency(settings.currency_symbol) }}
+          </div>
+          <del class="ml-2 text-xs text-gray-500">
+            {{ p.mrp | currency(settings.currency_symbol) }}
+          </del>
           </div>
         </div>
         <div class="flex items-center justify-between">
