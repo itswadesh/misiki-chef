@@ -16,5 +16,8 @@ import { Error, Header } from '~/shared/components'
 export default {
   middleware: ['geo'],
   components: { Error, Header, BackToTopDark, Loading },
+  head() {
+    return this.$nuxtI18nHead()
+  },
 }
 </script>

@@ -18,5 +18,8 @@ import { Loading } from '~/shared/components/ui'
 export default {
   props: ['error'],
   components: { Error, Loading },
+  head() {
+    return this.$nuxtI18nHead()
+  },
 }
 </script>

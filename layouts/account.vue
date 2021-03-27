@@ -22,5 +22,8 @@ import AccountMenu from '~/components/AccountMenu'
 export default {
   middleware: ['geo'],
   components: { Error, Header, StickyFooter, AccountMenu, Loading },
+  head() {
+    return this.$nuxtI18nHead()
+  },
 }
 </script>

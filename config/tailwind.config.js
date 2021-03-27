@@ -19,8 +19,8 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          200: '#FCD34D', //light yellow
-          500: '#B26E12', //golden
+          200: '#FBA940', //light yellow
+          500: '#FC6641', //orange
         },
         secondary: {
           100: '#dff7d5', //very light green
@@ -47,5 +47,9 @@ module.exports = {
       backgroundColor: ['active'],
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('tailwindcss-rtl')],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
+  ],
 }

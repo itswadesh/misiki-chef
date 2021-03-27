@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 antialiased min-h-screen">
+  <div class="min-h-screen antialiased bg-gray-100">
     <!-- <Loading /> -->
     <Search />
     <div class="mt-16 mb-12">
@@ -17,5 +17,8 @@ import StickyFooter from '~/components/StickyFooter'
 export default {
   middleware: ['geo'],
   components: { Error, Search, StickyFooter, BackToTopDark, Loading },
+  head() {
+    return this.$nuxtI18nHead()
+  },
 }
 </script>

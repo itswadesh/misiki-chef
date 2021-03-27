@@ -1,6 +1,13 @@
-# reload
+# Clone Entire
+```
+git clone git@github.com:itswadesh/misiki-www.git --recurse-submodules
+```
 
-> My riveting Nuxt.js project
+# Update submodule
+
+```
+git submodule update --init --recursive
+```
 
 ## Build Setup
 
@@ -18,3 +25,5 @@ $ yarn start
 # generate static project
 $ yarn generate
 ```
+
+now secrets add http_endpoint https://apiv2.misiki.in

@@ -55,6 +55,13 @@
           />
           <Textbox
             class="w-full mb-4"
+            label="MRP"
+            name="mrp"
+            v-model.number="food.mrp"
+            type="tel"
+          />
+          <Textbox
+            class="w-full mb-4"
             label="Qty"
             name="qty"
             v-model.number="food.stock"
