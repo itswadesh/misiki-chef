@@ -20,6 +20,7 @@ config.plugins.push({ src: '~/shared/plugins/slick.js', ssr: false })
 // config.plugins.push(
 //   { src: '~/shared/plugins/vue-simple-photoswipe.js', ssr: false },
 // )
+config.ssr = false
 config.server = {
   host: '0.0.0.0',
   port: PORT,

@@ -1,13 +1,13 @@
 <template>
   <div class="h-full text-center">
-    <img class="w-full h-84 object-cover" v-lazy="'/onboarding.png'" alt />
-    <h1 class="text-2xl font-bold mt-6 mx-6 leading-tight">
-      Order from cloud kitchens near you
+    <img class="object-cover w-full h-84" v-lazy="'/onboarding.png'" alt />
+    <h1 class="mx-6 mt-6 text-2xl font-bold leading-tight">
+      Order from cloud kitchens near you.
     </h1>
     <div class="text-gray-600">Ready to see top chefs to order?</div>
     <nuxt-link
       to="/change-location"
-      class="inline-block mt-4 py-3 px-6 primary uppercase rounded shadow-lg"
+      class="inline-block px-6 py-3 mt-4 uppercase rounded shadow-lg primary"
       >SETUP YOUR LOCATION</nuxt-link
     >
   </div>
@@ -16,6 +16,11 @@
 <script>
 export default {
   layout: 'none',
+  head() {
+    return {
+      title: 'Onboarding... ' + heading,
+    }
+  },
 }
 </script>
 
