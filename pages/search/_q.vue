@@ -3,25 +3,20 @@
     <!-- <Banner /> -->
     <div class="container relative">
       <!-- <Categories /> -->
+      <nuxt-link class="fixed top-0 right-0 z-10 mt-16 fab" to="/foods/new">
+        <PlusIcon />
+      </nuxt-link>
       <div
         v-if="!user || !user.verified"
         class="px-8 py-8 text-xl text-center text-secondary"
       >
         Waiting for verification by admin
       </div>
-      <div
-        v-else
-        class="flex flex-wrap"
-        v-infinite-scroll="loadMore"
-        :infinite-scroll-distance="3"
-        :infinite-scroll-immediate-check="true"
-      >
-        <nuxt-link class="fixed top-0 right-0 z-10 mt-16 fab" to="/foods/new">
-          <PlusIcon />
-        </nuxt-link>
+      <div v-else class="flex flex-wrap">
         <div class="w-full" v-for="p in data" :key="p._id">
           <ListCard :p="p" />
         </div>
+        <infinite-loading @infinite="loadMore"></infinite-loading>
       </div>
     </div>
   </div>
