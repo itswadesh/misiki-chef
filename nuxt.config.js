@@ -34,7 +34,7 @@ config.buildModules = [
   'vue-social-sharing/nuxt',
   '@nuxtjs/toast',
   ['nuxt-i18n', I18N],
-  ['@nuxtjs/firebase', firebaseConfig],
+  // ['@nuxtjs/firebase', firebaseConfig],
 ]
 config.modules = [
   '@nuxtjs/proxy',
