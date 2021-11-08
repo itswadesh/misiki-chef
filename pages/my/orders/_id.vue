@@ -11,7 +11,14 @@
     <h1 class="text-center" v-if="!order">Order not found</h1>
     <div v-else class="flex flex-col pt-8 text-center">
       <div
-        class="w-full py-5 text-sm tracking-widest text-center text-black bg-white"
+        class="
+          w-full
+          py-5
+          text-sm
+          tracking-widest
+          text-center text-black
+          bg-white
+        "
       >
         <p class="font-semibold">Order {{ order.orderNo }}</p>
         <Span class="flex flex-wrap justify-center text-xs text-gray-600">
@@ -78,7 +85,16 @@
         </div>
         <nuxt-link
           to="/search/"
-          class="block p-2 text-sm font-semibold text-left text-red-600 bg-white border-b rounded"
+          class="
+            block
+            p-2
+            text-sm
+            font-semibold
+            text-left text-red-600
+            bg-white
+            border-b
+            rounded
+          "
           >Add more items +</nuxt-link
         >
       </div>
@@ -114,7 +130,17 @@
         </div>
       </div>
       <div
-        class="p-4 mx-2 my-4 text-sm font-semibold text-gray-700 border border-green-500 rounded text-black-400"
+        class="
+          p-4
+          mx-2
+          my-4
+          text-sm
+          font-semibold
+          text-gray-700
+          border border-green-500
+          rounded
+          text-black-400
+        "
       >
         <span class="text-xs text-semibold">PAYMENT MODE</span>
         <br />

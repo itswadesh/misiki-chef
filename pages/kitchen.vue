@@ -1,12 +1,9 @@
 <template>
   <div>
     <Heading title="Kitchen Photos" />
-    <div
-      v-if="profile && profile.info && profile.info.restaurant"
-      class="container"
-    >
+    <div v-if="profile && profile.info && profile.info.store" class="container">
       <h1 class="text-xl font-bold text-center text-gray-700">
-        {{ profile.info.restaurant }}
+        {{ profile.info.store }}
       </h1>
       <ImageUpload
         name="kitchen"
@@ -24,7 +21,17 @@
           <button
             type="button"
             @click="remove(d)"
-            class="w-8 h-8 rounded-full bg-gray-300 cursor-pointer hover:bg-gray-200 absolute top-0 right-0"
+            class="
+              w-8
+              h-8
+              rounded-full
+              bg-gray-300
+              cursor-pointer
+              hover:bg-gray-200
+              absolute
+              top-0
+              right-0
+            "
           >
             <XIcon />
           </button>
@@ -34,9 +41,17 @@
     </div>
     <div
       v-else
-      class="mx-atuo justify-center flex text-center align-middle h-72 items-center"
+      class="
+        mx-atuo
+        justify-center
+        flex
+        text-center
+        align-middle
+        h-72
+        items-center
+      "
     >
-      Please update restaurant info in&nbsp;
+      Please update kitchen info in&nbsp;
       <nuxt-link to="/my/profile">profile</nuxt-link>
     </div>
     <StickyFooter />
@@ -87,7 +102,7 @@ export default {
         confirmButtonText: 'Yes, delete it!',
       }).then((result) => {
         if (result.value) {
-          this.profile.info.kitchenPhotos = this.profile.info.kitchenPhotos.filter(
+          this.profile.info.banners = this.profile.info.banners.filter(
             function (value, index, kf) {
               return value != name
             }

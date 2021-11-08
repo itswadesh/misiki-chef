@@ -20,10 +20,20 @@
         <img v-lazy="p.img" class="object-cover w-32 h-20 rounded" />
       </nuxt-link>
       <div class="w-full my-2" v-if="p.vendor">
-        <nuxt-link v-if="p.vendor" :to="`/search/${p.vendor.info.restaurant}`">
+        <nuxt-link v-if="p.vendor" :to="`/search/${p.vendor.info.store}`">
           <img
             v-lazy="`/${p.vendor.avatar}`"
-            class="absolute top-0 right-0 object-cover w-8 h-8 mt-2 mr-2 rounded-full"
+            class="
+              absolute
+              top-0
+              right-0
+              object-cover
+              w-8
+              h-8
+              mt-2
+              mr-2
+              rounded-full
+            "
           />
         </nuxt-link>
         <nuxt-link :to="`/foods/${p.id}`" class="font-bold tracking-wide">
@@ -36,13 +46,13 @@
               {{ p.stock }} left
             </span>
           </div>
-          <div class="flex items-center ">
-          <div class="text-xl font-black text-gray-700">
-            {{ p.price | currency(settings.currency_symbol) }}
-          </div>
-          <del class="ml-2 text-xs text-gray-500">
-            {{ p.mrp | currency(settings.currency_symbol) }}
-          </del>
+          <div class="flex items-center">
+            <div class="text-xl font-black text-gray-700">
+              {{ p.price | currency(settings.currency_symbol) }}
+            </div>
+            <del class="ml-2 text-xs text-gray-500">
+              {{ p.mrp | currency(settings.currency_symbol) }}
+            </del>
           </div>
         </div>
         <div class="flex items-center justify-between">

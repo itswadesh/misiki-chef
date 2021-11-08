@@ -46,7 +46,20 @@
             <ol class="flex flex-col" v-for="(i, ix) in o.items" :key="i.id">
               <div class="flex items-center justify-between">
                 <div
-                  class="flex items-center justify-center w-8 h-8 mr-2 font-bold text-center align-middle bg-gray-300 rounded-full shadow-xl"
+                  class="
+                    flex
+                    items-center
+                    justify-center
+                    w-8
+                    h-8
+                    mr-2
+                    font-bold
+                    text-center
+                    align-middle
+                    bg-gray-300
+                    rounded-full
+                    shadow-xl
+                  "
                 >
                   {{ ix + 1 }}
                 </div>
@@ -71,7 +84,7 @@
               </select>
             </ol>
           </ul>
-          <!-- <h3 v-if="o.vendor" class="tracking-wide text-right">{{ o.vendor.restaurant }}</h3> -->
+          <!-- <h3 v-if="o.vendor" class="tracking-wide text-right">{{ o.vendor.store }}</h3> -->
           <div class="text-xs text-right text-cyan-500">
             {{ o.createdAt | date }}
           </div>

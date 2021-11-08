@@ -32,11 +32,11 @@
             <br />
           </div>
           <Textbox
-            label="Restaurant"
+            label="Kitchen"
             class="w-full mb-4"
-            name="restaurant"
+            name="store"
             v-if="profile.info"
-            v-model="profile.info.restaurant"
+            v-model="profile.info.store"
           />
           <div class="flex justify-between w-full mb-4">
             <Textbox
@@ -105,18 +105,43 @@
           />-->
         </div>
         <div
-          class="fixed bottom-0 flex justify-between w-full shadow lg:shadow-none lg:relative"
+          class="
+            fixed
+            bottom-0
+            flex
+            justify-between
+            w-full
+            shadow
+            lg:shadow-none lg:relative
+          "
         >
           <button
             type="button"
             @click="$router.push('/my')"
-            class="w-1/2 p-3 text-sm font-semibold tracking-widest text-black bg-white lg:rounded"
+            class="
+              w-1/2
+              p-3
+              text-sm
+              font-semibold
+              tracking-widest
+              text-black
+              bg-white
+              lg:rounded
+            "
           >
             CANCEL
           </button>
           <button
             type="submit"
-            class="w-1/2 p-3 text-sm font-semibold tracking-widest primary lg:rounded"
+            class="
+              w-1/2
+              p-3
+              text-sm
+              font-semibold
+              tracking-widest
+              primary
+              lg:rounded
+            "
           >
             CONTINUE
           </button>
@@ -197,7 +222,7 @@ export default {
       this.a.phone = this.profile.phone
       // if (!this.profile.info) this.profile.info = {};
       // this.profile.public = this.profile.info.public || false;
-      // this.profile.restaurant = this.profile.info.restaurant;
+      // this.profile.store = this.profile.info.store;
     } catch (e) {
       this.$store.commit('setErr', e)
     } finally {
@@ -228,7 +253,7 @@ export default {
     async saveProfile() {
       try {
         this.$store.commit('clearErr')
-        // this.profile.restaurant = this.profile.info.restaurant;
+        // this.profile.store = this.profile.info.store;
         // this.profile.public = !!this.profile.info.public;
         // this.profile.address = this.a;
         delete this.profile.address.__typename
