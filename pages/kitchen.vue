@@ -14,7 +14,7 @@
       />
       <div class="flex flex-wrap mx-1 mt-2" v-if="profile.info">
         <div
-          v-for="(d, ix) in profile.info.kitchenPhotos"
+          v-for="(d, ix) in profile.info.storePhotos"
           :key="ix"
           class="w-1/2 p-2 self-stretch shadow relative px-1 bg-gray-100 mb-2"
         >
@@ -61,14 +61,14 @@
 import { Heading, ImageUpload } from '~/shared/components'
 import StickyFooter from '~/components/StickyFooter'
 import me from '~/gql/user/me.gql'
-import kitchenPhotos from '~/gql/user/kitchenPhotos.gql'
+import storePhotos from '~/gql/user/kitchenPhotos.gql'
 import { XIcon } from 'vue-feather-icons'
 
 export default {
   middleware: ['isAuth'],
   components: { Heading, ImageUpload, StickyFooter, XIcon },
   data() {
-    return { loading: false, kitchenPhotos: [], profile: null, errors: [] }
+    return { loading: false, storePhotos: [], profile: null, errors: [] }
   },
   // computed: {
   //   user() {
@@ -80,15 +80,15 @@ export default {
   },
   methods: {
     saveImage(name, images) {
-      this.profile.info.kitchenPhotos = this.profile.info.kitchenPhotos || []
-      this.profile.info.kitchenPhotos = [
-        ...this.profile.info.kitchenPhotos,
+      this.profile.info.storePhotos = this.profile.info.storePhotos || []
+      this.profile.info.storePhotos = [
+        ...this.profile.info.storePhotos,
         ...images,
       ]
       this.submit(this.profile)
     },
     removeImage(name) {
-      this.profile.info.kitchenPhotos = ''
+      this.profile.info.storePhotos = ''
       this.submit(this.profile)
     },
     remove(name) {
@@ -115,7 +115,7 @@ export default {
       try {
         const data = (
           await this.$apollo.mutate({
-            mutation: kitchenPhotos,
+            mutation: storePhotos,
             variables: { ...profile.info },
             fetchPolicy: 'no-cache',
           })

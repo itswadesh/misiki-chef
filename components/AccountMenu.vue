@@ -7,7 +7,16 @@
         <ErrComponent v-else-if="error" :error="error" />
         <div
           v-else-if="data && data.me"
-          class="w-full p-10 leading-loose text-center bg-white border-b border-gray-200 shadow lg:w-1/5 lg:mt-10"
+          class="
+            w-full
+            p-10
+            leading-loose
+            text-center
+            bg-white
+            border-b border-gray-200
+            shadow
+            lg:w-1/5 lg:mt-10
+          "
         >
           <div class="mb-2">
             <img
@@ -18,11 +27,21 @@
             />
             <span
               v-else
-              class="inline-block w-20 h-20 p-2 text-4xl text-gray-600 bg-gray-200 rounded-full"
+              class="
+                inline-block
+                w-20
+                h-20
+                p-2
+                text-4xl text-gray-600
+                bg-gray-200
+                rounded-full
+              "
               >{{ data.me.firstName | first }}</span
             >
           </div>
-          <div class="text-lg">{{ data.me.firstName }} {{ user.lastName }}</div>
+          <div class="text-lg">
+            {{ data.me.firstName }} {{ data.me.lastName }}
+          </div>
           <div class="text-sm text-gray-500">{{ data.me.phone }}</div>
         </div>
       </template>
@@ -31,7 +50,17 @@
       <div class="flex justify-center">
         <nav id="nav" class="relative w-full">
           <span
-            class="absolute w-full h-10 transition-transform ease-out bg-white rounded-lg shadow transition-medium"
+            class="
+              absolute
+              w-full
+              h-10
+              transition-transform
+              ease-out
+              bg-white
+              rounded-lg
+              shadow
+              transition-medium
+            "
             :style="{ transform: `translateY(calc(100% * ${selected}))` }"
           ></span>
           <ul class="relative">
@@ -40,7 +69,15 @@
                 type="button"
                 @click="select(0, '/search')"
                 :aria-selected="selected === 0"
-                class="flex items-center w-full px-3 py-2 focus:outline-none focus-visible:underline"
+                class="
+                  flex
+                  items-center
+                  w-full
+                  px-3
+                  py-2
+                  focus:outline-none
+                  focus-visible:underline
+                "
               >
                 <svg
                   :class="selected === 0 ? 'text-indigo-400' : 'text-gray-500'"
@@ -56,7 +93,14 @@
                 </svg>
                 <span
                   :class="selected === 0 ? 'text-indigo-600' : 'text-gray-700'"
-                  class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
+                  class="
+                    ml-2
+                    text-sm
+                    font-medium
+                    transition-all
+                    ease-out
+                    transition-medium
+                  "
                   >Dishes</span
                 >
               </button>
@@ -66,7 +110,15 @@
                 type="button"
                 @click="select(1, '/orders')"
                 :aria-selected="selected === 1"
-                class="flex items-center w-full px-3 py-2 focus:outline-none focus-visible:underline"
+                class="
+                  flex
+                  items-center
+                  w-full
+                  px-3
+                  py-2
+                  focus:outline-none
+                  focus-visible:underline
+                "
               >
                 <svg
                   :class="selected === 1 ? 'text-indigo-400' : 'text-gray-500'"
@@ -82,7 +134,14 @@
                 </svg>
                 <span
                   :class="selected === 1 ? 'text-indigo-600' : 'text-gray-700'"
-                  class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
+                  class="
+                    ml-2
+                    text-sm
+                    font-medium
+                    transition-all
+                    ease-out
+                    transition-medium
+                  "
                   >Orders</span
                 >
               </button>
@@ -92,7 +151,15 @@
                 type="button"
                 @click="select(2, '/my/address')"
                 :aria-selected="selected === 2"
-                class="flex items-center w-full px-3 py-2 focus:outline-none focus-visible:underline"
+                class="
+                  flex
+                  items-center
+                  w-full
+                  px-3
+                  py-2
+                  focus:outline-none
+                  focus-visible:underline
+                "
               >
                 <svg
                   :class="selected === 2 ? 'text-indigo-400' : 'text-gray-500'"
@@ -108,7 +175,14 @@
                 </svg>
                 <span
                   :class="selected === 2 ? 'text-indigo-600' : 'text-gray-700'"
-                  class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
+                  class="
+                    ml-2
+                    text-sm
+                    font-medium
+                    transition-all
+                    ease-out
+                    transition-medium
+                  "
                   >Address</span
                 >
               </button>
@@ -118,7 +192,15 @@
                 type="button"
                 @click="select(3, '/my/profile')"
                 :aria-selected="selected === 3"
-                class="flex items-center w-full px-3 py-2 focus:outline-none focus-visible:underline"
+                class="
+                  flex
+                  items-center
+                  w-full
+                  px-3
+                  py-2
+                  focus:outline-none
+                  focus-visible:underline
+                "
               >
                 <svg
                   :class="selected === 3 ? 'text-indigo-400' : 'text-gray-500'"
@@ -139,7 +221,14 @@
                 </svg>
                 <span
                   :class="selected === 3 ? 'text-indigo-600' : 'text-gray-700'"
-                  class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
+                  class="
+                    ml-2
+                    text-sm
+                    font-medium
+                    transition-all
+                    ease-out
+                    transition-medium
+                  "
                   >Profile Details</span
                 >
               </button>
@@ -149,7 +238,15 @@
                 type="button"
                 @click="select(4, '/reviews')"
                 :aria-selected="selected === 4"
-                class="flex items-center w-full px-3 py-2 focus:outline-none focus-visible:underline"
+                class="
+                  flex
+                  items-center
+                  w-full
+                  px-3
+                  py-2
+                  focus:outline-none
+                  focus-visible:underline
+                "
               >
                 <svg
                   :class="selected === 4 ? 'text-indigo-400' : 'text-gray-500'"
@@ -170,7 +267,14 @@
                 </svg>
                 <span
                   :class="selected === 4 ? 'text-indigo-600' : 'text-gray-700'"
-                  class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
+                  class="
+                    ml-2
+                    text-sm
+                    font-medium
+                    transition-all
+                    ease-out
+                    transition-medium
+                  "
                   >Reviews</span
                 >
               </button>
@@ -181,7 +285,15 @@
                 type="button"
                 @click="select(5, '/kitchen')"
                 :aria-selected="selected === 5"
-                class="flex items-center w-full px-3 py-2 focus:outline-none focus-visible:underline"
+                class="
+                  flex
+                  items-center
+                  w-full
+                  px-3
+                  py-2
+                  focus:outline-none
+                  focus-visible:underline
+                "
               >
                 <svg
                   :class="selected === 5 ? 'text-indigo-400' : 'text-gray-500'"
@@ -202,7 +314,14 @@
                 </svg>
                 <span
                   :class="selected === 5 ? 'text-indigo-600' : 'text-gray-700'"
-                  class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
+                  class="
+                    ml-2
+                    text-sm
+                    font-medium
+                    transition-all
+                    ease-out
+                    transition-medium
+                  "
                   >Kitchen</span
                 >
               </button>
@@ -212,7 +331,15 @@
                 type="button"
                 @click="select(5, '/instructions')"
                 :aria-selected="selected === 5"
-                class="flex items-center w-full px-3 py-2 focus:outline-none focus-visible:underline"
+                class="
+                  flex
+                  items-center
+                  w-full
+                  px-3
+                  py-2
+                  focus:outline-none
+                  focus-visible:underline
+                "
               >
                 <svg
                   :class="selected === 5 ? 'text-indigo-400' : 'text-gray-500'"
@@ -233,7 +360,14 @@
                 </svg>
                 <span
                   :class="selected === 5 ? 'text-indigo-600' : 'text-gray-700'"
-                  class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
+                  class="
+                    ml-2
+                    text-sm
+                    font-medium
+                    transition-all
+                    ease-out
+                    transition-medium
+                  "
                 >
                   Instructions
                 </span>
@@ -243,10 +377,25 @@
               <button
                 type="button"
                 @click="logout"
-                class="flex items-center w-full px-3 py-2 focus:outline-none focus-visible:underline"
+                class="
+                  flex
+                  items-center
+                  w-full
+                  px-3
+                  py-2
+                  focus:outline-none
+                  focus-visible:underline
+                "
               >
                 <svg
-                  class="w-6 h-6 text-gray-500 transition-all ease-out transition-medium"
+                  class="
+                    w-6
+                    h-6
+                    text-gray-500
+                    transition-all
+                    ease-out
+                    transition-medium
+                  "
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -262,7 +411,15 @@
                   />
                 </svg>
                 <span
-                  class="ml-2 text-sm font-medium text-gray-700 transition-all ease-out transition-medium"
+                  class="
+                    ml-2
+                    text-sm
+                    font-medium
+                    text-gray-700
+                    transition-all
+                    ease-out
+                    transition-medium
+                  "
                   >Logout</span
                 >
               </button>
